@@ -10,12 +10,14 @@
  */
 package com.mohiva.play.htmlcompressor.fixtures
 
-import akka.stream.scaladsl.Source
-import akka.util.ByteString
-import play.api.http.{ DefaultHttpErrorHandler }
+import scala.concurrent.Future
+
+import play.api.http.DefaultHttpErrorHandler
 import play.api.mvc._
 import play.twirl.api.Html
-import scala.concurrent.Future
+
+import akka.stream.scaladsl.Source
+import akka.util.ByteString
 import controllers.{ AssetsBuilder, AssetsMetadata }
 
 /**

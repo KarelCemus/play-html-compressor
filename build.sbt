@@ -1,6 +1,4 @@
-import com.typesafe.sbt.SbtScalariform._
 import play.sbt.PlayImport._
-import xerial.sbt.Sonatype._
 
 import scalariform.formatter.preferences._
 
@@ -9,8 +7,6 @@ import scalariform.formatter.preferences._
 //*******************************
 
 name := "play-html-compressor"
-
-version := "0.7.1"
 
 libraryDependencies ++= Seq(
   "com.googlecode.htmlcompressor" % "htmlcompressor" % "1.5.2",
@@ -21,49 +17,31 @@ libraryDependencies ++= Seq(
   filters % Test
 )
 
-lazy val root = (project in file(".")).enablePlugins(play.sbt.Play)
+lazy val root = (project in file(".")).enablePlugins(play.sbt.PlayWeb)
 
 //*******************************
 // Maven settings
 //*******************************
 
-sonatypeSettings
-
-organization := "com.mohiva"
+organization := "com.github.karelcemus"
 
 description := "Google's HTML Compressor for Play Framework 2"
 
-homepage := Some(url("https://github.com/mohiva/play-html-compressor/"))
+homepage := Some(url("https://github.com/karelcemus/play-html-compressor/"))
 
 licenses := Seq("BSD New" -> url("https://github.com/mohiva/play-html-compressor/blob/master/LICENSE.md"))
 
-val pom = <scm>
-    <url>git@github.com:mohiva/play-html-compressor.git</url>
-    <connection>scm:git:git@github.com:mohiva/play-html-compressor.git</connection>
-  </scm>
-  <developers>
-    <developer>
-      <id>akkie</id>
-      <name>Christian Kaps</name>
-      <url>http://mohiva.com</url>
-    </developer>
-  </developers>
+author := "Karel Cemus"
 
-publishMavenStyle := true
-
-publishArtifact in Test := false
-
-pomIncludeRepository := { _ => false }
-
-pomExtra := pom
+github := "KarelCemus/mettle"
 
 //*******************************
 // Compiler settings
 //*******************************
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.8"
 
-crossScalaVersions := Seq("2.12.2", "2.11.11")
+crossScalaVersions := Seq("2.12.8", "2.11.11")
 
 scalacOptions ++= Seq(
   "-deprecation", // Emit warning and location for usages of deprecated APIs.
@@ -89,9 +67,7 @@ javacOptions ++= Seq(
 // Scalariform settings
 //*******************************
 
-defaultScalariformSettings
-
-ScalariformKeys.preferences := ScalariformKeys.preferences.value
+scalariformPreferences := scalariformPreferences.value
   .setPreference(FormatXml, false)
-  .setPreference(DoubleIndentClassDeclaration, false)
+  .setPreference(DoubleIndentConstructorArguments, false)
   .setPreference(DanglingCloseParenthesis, Preserve)
