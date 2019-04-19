@@ -1,14 +1,19 @@
 // Comment to get more information during initialization
 logLevel := Level.Warn
 
-resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += Resolver.typesafeRepo("releases")
 
-resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+resolvers += Resolver.sonatypeRepo("releases")
 
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.1")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.1")
 
-addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
+addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.2")
 
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "0.5.1")
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.11")
 
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
+// PGP signature
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.1")
+
+// looks up new versions of SBT dependencies, check for dependencies updates
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.4.0")
+
