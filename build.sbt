@@ -33,7 +33,7 @@ licenses := Seq("BSD New" -> url("https://github.com/mohiva/play-html-compressor
 
 author := "Karel Cemus"
 
-github := "KarelCemus/mettle"
+github := "KarelCemus/play-html-compressor"
 
 //*******************************
 // Compiler settings
